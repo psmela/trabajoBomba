@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  #bomba {
+    font-size: 48px;
+    transition: 0.5s;
+  }
+  #explosion {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<div id="bomba">💣</div>
+<div id="explosion">💥</div>
+
+<script>
+  let bombaSize = 48;
+
+  document.addEventListener('keydown', function(e) {
+    switch (e.keyCode) {
+      case 38: // Flecha arriba
+        if (bombaSize < 100) {
+          bombaSize += 10;
+          document.getElementById('bomba').style.fontSize = bombaSize + 'px';
+        } else {
+          // Explota la bomba
+          document.getElementById('bomba').style.display = 'none';
+          document.getElementById('explosion').style.display = 'block';
+        }
+        break;
+      case 40: // Flecha abajo
+        if (bombaSize > 10) {
+          bombaSize -= 10;
+          document.getElementById('bomba').style.fontSize = bombaSize + 'px';
+        }
+        break;
+    }
+  });
+</script>
+
+</body>
+</html>
